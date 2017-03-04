@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BlD-H9-V2H">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="usY-x1-HUx">
+            <objects>
+                <navigationController id="BlD-H9-V2H" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kQY-17-r2h">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="pzy-cN-XY0">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="uhK-Vp-Kdc" kind="relationship" relationship="rootViewController" id="mvn-2E-F1j"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hJu-4o-U4R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-465" y="261"/>
+        </scene>
+        <!--title-->
+        <scene sceneID="7ZF-rO-m2p">
+            <objects>
+                <viewController id="uhK-Vp-Kdc" customClass="ViewController" customModule="zoom" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5CC-aM-pLk"/>
+                        <viewControllerLayoutGuide type="bottom" id="emG-rC-u2r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mOI-Ij-AYJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mdY-gQ-hw4">
+                                <rect key="frame" x="164" y="318" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="xMd-Kq-KEJ" kind="show" id="kAg-yh-Wix"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="title" id="d1P-KR-hVz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BpA-2q-Uf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="359" y="260"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="WDp-go-eXD">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="xMd-Kq-KEJ" customClass="DetailViewController" customModule="zoom" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bnB-4J-Ck0"/>
+                        <viewControllerLayoutGuide type="bottom" id="EBm-zw-XUx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="cps-t2-bhU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="3" translatesAutoresizingMaskIntoConstraints="NO" id="huN-8j-bSF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yva-kG-1V5">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKU-DT-Tn9">
+                                                <rect key="frame" x="8" y="8" width="359" height="651"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="SKU-DT-Tn9" secondAttribute="bottom" constant="8" id="GiU-LC-H5N"/>
+                                            <constraint firstAttribute="trailing" secondItem="SKU-DT-Tn9" secondAttribute="trailing" constant="8" id="OUz-TB-aNc"/>
+                                            <constraint firstItem="SKU-DT-Tn9" firstAttribute="leading" secondItem="yva-kG-1V5" secondAttribute="leading" constant="8" id="UnI-fG-dGf"/>
+                                            <constraint firstItem="SKU-DT-Tn9" firstAttribute="top" secondItem="yva-kG-1V5" secondAttribute="top" constant="8" id="xRJ-A7-8s5"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="SOy-bK-VJR" appends="YES" id="qKu-fV-MEN"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yva-kG-1V5" secondAttribute="trailing" id="DzQ-nL-NN5"/>
+                                    <constraint firstItem="yva-kG-1V5" firstAttribute="leading" secondItem="huN-8j-bSF" secondAttribute="leading" id="EZf-KX-ecE"/>
+                                    <constraint firstAttribute="bottom" secondItem="yva-kG-1V5" secondAttribute="bottom" id="a0q-VJ-vuc"/>
+                                    <constraint firstItem="yva-kG-1V5" firstAttribute="top" secondItem="huN-8j-bSF" secondAttribute="top" id="oxL-E4-CJ7"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="xMd-Kq-KEJ" id="2mC-uF-0tk"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EBm-zw-XUx" firstAttribute="top" secondItem="huN-8j-bSF" secondAttribute="bottom" id="BOm-kR-gTe"/>
+                            <constraint firstAttribute="trailing" secondItem="huN-8j-bSF" secondAttribute="trailing" id="Db4-27-O1k"/>
+                            <constraint firstItem="yva-kG-1V5" firstAttribute="width" secondItem="cps-t2-bhU" secondAttribute="width" id="K92-2K-Vpm"/>
+                            <constraint firstItem="yva-kG-1V5" firstAttribute="height" secondItem="cps-t2-bhU" secondAttribute="height" id="XjX-bk-0hp"/>
+                            <constraint firstItem="huN-8j-bSF" firstAttribute="leading" secondItem="cps-t2-bhU" secondAttribute="leading" id="k1M-1V-WGU"/>
+                            <constraint firstItem="huN-8j-bSF" firstAttribute="top" secondItem="cps-t2-bhU" secondAttribute="top" id="kb0-BE-xiT"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cR2-ZX-a6T"/>
+                    <connections>
+                        <outlet property="contentView" destination="yva-kG-1V5" id="v01-PA-P3d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KuD-Ij-pTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="SOy-bK-VJR">
+                    <connections>
+                        <action selector="tappedOnView:" destination="xMd-Kq-KEJ" id="FNc-e8-EIW"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1125.5999999999999" y="257.72113943028489"/>
+        </scene>
+    </scenes>
+</document>
