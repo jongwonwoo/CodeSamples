@@ -2,7 +2,7 @@
 //  DetailViewController.swift
 //  Rotation1
 //
-//  Created by 1000985 on 07/03/2017.
+//  Created by Jongwon Woo on 07/03/2017.
 //  Copyright © 2017 jongwonwoo. All rights reserved.
 //
 
