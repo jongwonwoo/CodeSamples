@@ -31,4 +31,4 @@
 - DetailViewController - viewWillAppear
 - DetailViewController - viewDidAppear
 
-![screenshot](CodeSamples/ViewController/ViewState/ViewStates.png)
+![screenshot](ViewStates.png)
