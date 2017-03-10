@@ -25,7 +25,7 @@ class ViewController: UIViewController {
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return [.portrait]
+        return [.all]
     }
 
 }

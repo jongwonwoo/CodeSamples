@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Title-->
+        <!--Portrait Only-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Rotation1" customModuleProvider="target" sceneMemberID="viewController">
@@ -51,7 +51,7 @@
                             <constraint firstItem="Pte-yD-VOe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vEm-pf-avT"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="1gf-r3-Sft"/>
+                    <navigationItem key="navigationItem" title="Portrait Only" id="1gf-r3-Sft"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -124,7 +124,7 @@
         <!--View Controller-->
         <scene sceneID="njn-4d-Mxd">
             <objects>
-                <viewController id="Mf2-5C-VdR" sceneMemberID="viewController">
+                <viewController id="Mf2-5C-VdR" customClass="ViewController" customModule="Rotation1" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yTQ-fG-553"/>
                         <viewControllerLayoutGuide type="bottom" id="Kqj-nY-C6q"/>
