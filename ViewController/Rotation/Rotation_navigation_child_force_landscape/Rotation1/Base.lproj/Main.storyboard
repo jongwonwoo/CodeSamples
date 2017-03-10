@@ -73,7 +73,7 @@
             </objects>
             <point key="canvasLocation" x="-182" y="224"/>
         </scene>
-        <!--Detail-->
+        <!--Landscape Only-->
         <scene sceneID="oLc-9o-N6w">
             <objects>
                 <viewController id="MJK-P0-cWk" customClass="DetailViewController" customModule="Rotation1" customModuleProvider="target" sceneMemberID="viewController">
@@ -97,28 +97,60 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotatable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eip-RR-YDo">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U1i-z2-SQz">
+                                <rect key="frame" x="112" y="318" width="150" height="30"/>
+                                <state key="normal" title="Open Rotatable Detail"/>
+                                <connections>
+                                    <segue destination="Mf2-5C-VdR" kind="show" id="Sdf-61-sWc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="vHG-Dj-rpE" firstAttribute="centerX" secondItem="pRi-S8-Al3" secondAttribute="centerX" id="AwZ-qb-eU8"/>
+                            <constraint firstItem="JXv-7F-qtb" firstAttribute="top" secondItem="MuX-hr-oad" secondAttribute="bottom" constant="8" id="EpS-4U-gdF"/>
+                            <constraint firstItem="b47-Od-beX" firstAttribute="top" secondItem="vHG-Dj-rpE" secondAttribute="bottom" constant="20" id="VVG-OO-O1z"/>
+                            <constraint firstItem="JXv-7F-qtb" firstAttribute="centerX" secondItem="pRi-S8-Al3" secondAttribute="centerX" id="cWL-GA-Wd1"/>
+                            <constraint firstItem="U1i-z2-SQz" firstAttribute="centerY" secondItem="pRi-S8-Al3" secondAttribute="centerY" id="fqg-wV-fbA"/>
+                            <constraint firstItem="U1i-z2-SQz" firstAttribute="centerX" secondItem="pRi-S8-Al3" secondAttribute="centerX" id="lLo-Ux-sLW"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Landscape Only" id="ypM-2M-Gqb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TJH-e5-lKT" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1365.5999999999999" y="223.53823088455775"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="njn-4d-Mxd">
+            <objects>
+                <viewController id="Mf2-5C-VdR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yTQ-fG-553"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kqj-nY-C6q"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qQO-ch-6fj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rotatable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajU-s6-boG">
                                 <rect key="frame" x="151" y="323" width="73" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="vHG-Dj-rpE" firstAttribute="centerX" secondItem="pRi-S8-Al3" secondAttribute="centerX" id="AwZ-qb-eU8"/>
-                            <constraint firstItem="JXv-7F-qtb" firstAttribute="top" secondItem="MuX-hr-oad" secondAttribute="bottom" constant="8" id="EpS-4U-gdF"/>
-                            <constraint firstItem="Eip-RR-YDo" firstAttribute="centerY" secondItem="pRi-S8-Al3" secondAttribute="centerY" id="GS1-cg-gxg"/>
-                            <constraint firstItem="b47-Od-beX" firstAttribute="top" secondItem="vHG-Dj-rpE" secondAttribute="bottom" constant="20" id="VVG-OO-O1z"/>
-                            <constraint firstItem="JXv-7F-qtb" firstAttribute="centerX" secondItem="pRi-S8-Al3" secondAttribute="centerX" id="cWL-GA-Wd1"/>
-                            <constraint firstItem="Eip-RR-YDo" firstAttribute="centerX" secondItem="pRi-S8-Al3" secondAttribute="centerX" id="sLY-fO-YST"/>
+                            <constraint firstItem="ajU-s6-boG" firstAttribute="centerX" secondItem="qQO-ch-6fj" secondAttribute="centerX" id="00O-9w-wuT"/>
+                            <constraint firstItem="ajU-s6-boG" firstAttribute="centerY" secondItem="qQO-ch-6fj" secondAttribute="centerY" id="Cqz-9H-Tz1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Detail" id="ypM-2M-Gqb"/>
+                    <navigationItem key="navigationItem" id="Nq3-ak-iBq"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TJH-e5-lKT" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TTx-W9-H8S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1365.5999999999999" y="223.53823088455775"/>
+            <point key="canvasLocation" x="2201" y="226"/>
         </scene>
     </scenes>
 </document>
