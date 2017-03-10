@@ -17,7 +17,8 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+    
+        // A portrait > B landscape > C. 근데 C가 landscape로 열리는 문제 수정.
         if (self.supportedInterfaceOrientations == .portrait && UIDevice.current.orientation != .portrait)
         {
             let value = UIInterfaceOrientation.portrait.rawValue
