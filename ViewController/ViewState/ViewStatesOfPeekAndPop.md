@@ -1,12 +1,38 @@
+## Peek and select an action
+### peek
+- presenting viewControllerForLocation
+- presented viewDidLoad
+- presented viewWillAppear
+- presented viewDidAppear
+- presented previewActionItems
 
-### Peek
-- Presenting VC - viewControllerForLocation
-- Presented VC - viewWillAppear
-- Presented VC - viewDidAppear
+### select an action
+- presented viewWillDisappear
+- presented viewDidDisappear
 
-### Pop
-- Presented VC - viewWillDisappear
-- Presented VC - viewDidDisappear
-- Presenting VC - commitViewController
-- Presented VC - viewWillAppear
-- Presented VC - viewDidAppear
+## Peek and Pop
+### peek
+- presenting viewControllerForLocation
+- presented viewDidLoad
+- presented viewWillAppear
+- presented viewDidAppear
+- presented previewActionItems
+
+### pop
+- presented viewWillDisappear
+- presented viewDidDisappear
+- presenting commitViewController
+- presented viewWillAppear
+- presented viewDidAppear
+
+## Peek and cancel
+### peek
+- presenting viewControllerForLocation
+- presented viewDidLoad
+- presented viewWillAppear
+- presented viewDidAppear
+- presented previewActionItems
+
+### cancel
+- presented viewWillDisappear
+- presented viewDidDisappear
