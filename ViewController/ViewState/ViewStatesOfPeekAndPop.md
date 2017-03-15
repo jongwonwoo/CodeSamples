@@ -3,10 +3,10 @@
 - Presenting VC - viewControllerForLocation
 - Presented VC - viewWillAppear
 - Presented VC - viewDidAppear
-- Presented VC - viewWillDisappear
-- Presented VC - viewDidDisappear
 
 ### Pop
+- Presented VC - viewWillDisappear
+- Presented VC - viewDidDisappear
 - Presenting VC - commitViewController
 - Presented VC - viewWillAppear
 - Presented VC - viewDidAppear
