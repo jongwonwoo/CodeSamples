@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        let value = UIDeviceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
     }
     
