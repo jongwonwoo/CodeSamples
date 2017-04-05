@@ -19,15 +19,8 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if (self.supportedInterfaceOrientations == .landscape && UIDevice.current.orientation != .landscapeLeft)
-        {
-            let value = UIInterfaceOrientation.landscapeRight.rawValue
-            UIDevice.current.setValue(value, forKey: "orientation")
-        } else if (self.supportedInterfaceOrientations == .landscape && UIDevice.current.orientation != .landscapeRight)
-        {
-            let value = UIInterfaceOrientation.landscapeLeft.rawValue
-            UIDevice.current.setValue(value, forKey: "orientation")
-        }
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,7 +33,7 @@ class DetailViewController: UIViewController {
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return [.landscape]
+        return [.landscapeLeft]
     }
 
 }
