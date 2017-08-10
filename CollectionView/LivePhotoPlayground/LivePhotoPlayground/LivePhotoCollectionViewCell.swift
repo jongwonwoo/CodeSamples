@@ -45,6 +45,6 @@ class LivePhotoCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        print(#function + " cell \(self.livePhoto?.debugDescription)")
+        print(#function + " of cell")
     }
 }

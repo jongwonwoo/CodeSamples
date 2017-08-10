@@ -11,18 +11,19 @@ import Photos
 
 class CustomCollectionView: UICollectionView {
     
+    var reloadDataCompletionBlock: (() -> Void)?
+    
+    func reloadDataWithCompletion(_ completion:@escaping () -> Void) {
+        reloadDataCompletionBlock = completion
+        super.reloadData()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        print(#function)
+        if let block = self.reloadDataCompletionBlock {
+            block()
+        }
     }
-    
-    override func reloadData() {
-        super.reloadData()
-        
-        print(#function)
-    }
-    
 }
 
 class LivePhotosViewController: UICollectionViewController {
@@ -47,12 +48,22 @@ class LivePhotosViewController: UICollectionViewController {
         
         self.requestPhotoLibraryAuthorization(authorized: { [unowned self] in
             DispatchQueue.main.async {
+                
                 self.fetchLivePhotos()
-                print("after fetchlive")
-                self.collectionView?.reloadData()
+                guard let collectionView = self.collectionView as? CustomCollectionView else { return }
+                collectionView.reloadDataWithCompletion {
+                    collectionView.reloadDataCompletionBlock = nil
+                    guard let count = self.livePhotos?.count else { return }
+                    self.collectionView?.scrollToItem(at: IndexPath.init(item: count - 1, section: 0),
+                                                      at: .centeredVertically, animated: true)
+                }
+                
 //                DispatchQueue.main.asyncAfter(deadline: .now()+1.0, execute: {
-//                    self.collectionView?.scrollToItem(at: IndexPath.init(item: 30, section: 0), at: .centeredVertically, animated: true)
+//                    guard let count = self.livePhotos?.count else { return }
+//                    self.collectionView?.scrollToItem(at: IndexPath.init(item: count - 1, section: 0),
+//                                                      at: .centeredVertically, animated: true)
 //                })
+                
                 self.registerForLivePhotosDidChange()
             }
         }, denied: { [unowned self] in
@@ -180,7 +191,7 @@ extension LivePhotosViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print(#function + " begin \(indexPath)")
+        print(#function + " \(indexPath)")
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LivePhotoCollectionViewCell
         
@@ -191,14 +202,11 @@ extension LivePhotosViewController {
             let scale = UIScreen.main.scale
             let targetSize = CGSize.init(width: itemSize.width * scale, height: itemSize.height * scale)
             self.livePhotoFetcher.fetchLivePhoto(for: asset, targetSize: targetSize, contentMode: .aspectFill, completion: { livePhoto in
-                print("after fetch livephoto")
                 DispatchQueue.main.async {
                     cell.livePhoto = livePhoto;
                 }
             })
         }
-        
-        print(#function + " end \(indexPath)")
         
         return cell
     }
