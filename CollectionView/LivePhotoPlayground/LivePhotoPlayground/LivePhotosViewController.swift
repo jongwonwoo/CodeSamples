@@ -53,9 +53,9 @@ class LivePhotosViewController: UICollectionViewController {
                 guard let collectionView = self.collectionView as? CustomCollectionView else { return }
                 collectionView.reloadDataWithCompletion {
                     collectionView.reloadDataCompletionBlock = nil
-                    guard let count = self.livePhotos?.count else { return }
-                    self.collectionView?.scrollToItem(at: IndexPath.init(item: count - 1, section: 0),
-                                                      at: .centeredVertically, animated: true)
+//                    guard let count = self.livePhotos?.count else { return }
+//                    self.collectionView?.scrollToItem(at: IndexPath.init(item: count - 1, section: 0),
+//                                                      at: .centeredVertically, animated: true)
                 }
                 
 //                DispatchQueue.main.asyncAfter(deadline: .now()+1.0, execute: {
@@ -208,7 +208,16 @@ extension LivePhotosViewController {
             })
         }
         
+        cell.indexPath = indexPath
+        
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print(#function + " \(indexPath)")
+    }
+    override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        print(#function + " \(indexPath)")
     }
 }
 
@@ -261,7 +270,7 @@ extension LivePhotosViewController {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension LivePhotosViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        print(#function + " \(indexPath)")
+//        print(#function + " \(indexPath)")
         
         let itemsPerRow: CGFloat = 1
         let paddingSpace = itemsPerRow + 1
@@ -272,13 +281,13 @@ extension LivePhotosViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        print(#function)
+//        print(#function)
         
         return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        print(#function)
+//        print(#function)
         
         return 1
     }
