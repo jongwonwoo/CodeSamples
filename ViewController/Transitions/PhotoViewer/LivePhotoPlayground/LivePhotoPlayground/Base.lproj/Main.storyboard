@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IaK-A0-mpQ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="dhB-b2-RSf">
+            <objects>
+                <navigationController id="IaK-A0-mpQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vp0-bT-DfK">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="IpJ-k4-xqD" kind="relationship" relationship="rootViewController" id="KrP-XW-DtG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XZK-E6-5A9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-975" y="582"/>
+        </scene>
+        <!--Photos-->
+        <scene sceneID="6jS-54-8Jf">
+            <objects>
+                <collectionViewController id="IpJ-k4-xqD" customClass="LivePhotosViewController" customModule="LivePhotoPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="0RM-uc-FP0" customClass="CustomCollectionView" customModule="LivePhotoPlayground" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="EXa-HU-14W">
+                            <size key="itemSize" width="200" height="200"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <view key="backgroundView" hidden="YES" contentMode="scaleToFill" id="WIN-fT-6wK">
+                            <rect key="frame" x="0.0" y="-64" width="375" height="667"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alE-mB-FuX">
+                                    <rect key="frame" x="8" y="278" width="359" height="110"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="No Photos">
+                                            <attributes>
+                                                <font key="NSFont" size="24" name=".SFNSText"/>
+                                                <font key="NSOriginalFont" size="24" name=".SFNSText"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment>
+                                            <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                            <attributes>
+                                                <font key="NSFont" metaFont="smallSystem"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="You can take photos using the camera, or sync photos onto your iPhone using iTunes.">
+                                            <attributes>
+                                                <font key="NSFont" size="17" name=".SFNSText"/>
+                                                <font key="NSOriginalFont" size="17" name=".SFNSText"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="alE-mB-FuX" firstAttribute="centerY" secondItem="WIN-fT-6wK" secondAttribute="centerY" id="LfI-vM-mUU"/>
+                                <constraint firstItem="alE-mB-FuX" firstAttribute="centerX" secondItem="WIN-fT-6wK" secondAttribute="centerX" id="bFk-fF-2Sw"/>
+                                <constraint firstItem="alE-mB-FuX" firstAttribute="leading" secondItem="WIN-fT-6wK" secondAttribute="leading" constant="8" id="jgb-2f-6Yo"/>
+                                <constraint firstAttribute="trailing" secondItem="alE-mB-FuX" secondAttribute="trailing" constant="8" id="z9c-ac-QWz"/>
+                            </constraints>
+                        </view>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LivePhotoCell" id="4G7-O4-4iF" customClass="LivePhotoCollectionViewCell" customModule="LivePhotoPlayground" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="0.0" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <connections>
+                                    <segue destination="Llw-w1-Qq0" kind="show" identifier="ShowLivePhotoDetail" id="BHw-Fv-5nK"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="IpJ-k4-xqD" id="yIm-zN-Tam"/>
+                            <outlet property="delegate" destination="IpJ-k4-xqD" id="EFa-p2-clY"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Photos" id="lUo-kb-4DW" userLabel="Live Photo">
+                        <barButtonItem key="backBarButtonItem" title=" " id="FId-WW-7OB"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="emptyMessageView" destination="WIN-fT-6wK" id="s9t-R4-g0b"/>
+                    </connections>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q7c-C7-Gvk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-151.19999999999999" y="580.65967016491754"/>
+        </scene>
+        <!--Live Photo View Controller-->
+        <scene sceneID="h5p-pw-hgq">
+            <objects>
+                <viewController id="Llw-w1-Qq0" customClass="LivePhotoViewController" customModule="LivePhotoPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W1A-xt-hmq"/>
+                        <viewControllerLayoutGuide type="bottom" id="NnZ-ev-qE0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3NT-0v-VIA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ntc-yg-hwz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NnZ-ev-qE0" firstAttribute="top" secondItem="Ntc-yg-hwz" secondAttribute="bottom" id="1oC-vW-SsN"/>
+                            <constraint firstItem="Ntc-yg-hwz" firstAttribute="leading" secondItem="3NT-0v-VIA" secondAttribute="leading" id="7tg-FL-0ac"/>
+                            <constraint firstAttribute="trailing" secondItem="Ntc-yg-hwz" secondAttribute="trailing" id="N3f-se-6U4"/>
+                            <constraint firstItem="Ntc-yg-hwz" firstAttribute="top" secondItem="3NT-0v-VIA" secondAttribute="top" id="bG4-7m-sYe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="1of-e4-syb">
+                        <barButtonItem key="backBarButtonItem" title=" " id="TuE-Vp-y4w"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentView" destination="Ntc-yg-hwz" id="0Pc-d4-BDG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ab-I8-nNt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="632.79999999999995" y="587.85607196401804"/>
+        </scene>
+    </scenes>
+</document>
