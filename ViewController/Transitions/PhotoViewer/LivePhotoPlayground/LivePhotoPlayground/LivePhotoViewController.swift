@@ -137,29 +137,25 @@ class PhotosCollectionViewFlowLayout: UICollectionViewFlowLayout {
     
     override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
         var offsetAdjustment = CGFloat.greatestFiniteMagnitude
-        let currentOffset = self.collectionView!.contentOffset.x
-        let targetRect = CGRect(x:currentOffset, y:0, width:self.collectionView!.bounds.size.width, height:self.collectionView!.bounds.size.height)
+        var newProposedOffset = CGFloat(0)
         
         if velocity.x == 0 {
-            let horizontalOffset = proposedContentOffset.x
-            for layoutAttributes in super.layoutAttributesForElements(in: targetRect)! {
-                let itemOffset = layoutAttributes.frame.origin.x
-                if (abs(itemOffset - horizontalOffset) < abs(offsetAdjustment)) {
-                    offsetAdjustment = itemOffset - horizontalOffset
-                }
-            }
-            
-            return CGPoint(x:proposedContentOffset.x + offsetAdjustment, y:proposedContentOffset.y)
-        } else {
-            let leftToRight = velocity.x > 0
-            if let layoutAttributes = leftToRight ? super.layoutAttributesForElements(in: targetRect)?.last : super.layoutAttributesForElements(in: targetRect)?.first {
-                let itemOffset = layoutAttributes.frame.origin.x
-                if (abs(itemOffset - currentOffset) < abs(offsetAdjustment)) {
-                    offsetAdjustment = itemOffset - currentOffset
-                }
+            newProposedOffset = proposedContentOffset.x
+        } else if velocity.x > 0 {
+            newProposedOffset = self.collectionView!.contentOffset.x + self.collectionView!.bounds.size.width / 2
+        } else if velocity.x < 0 {
+            newProposedOffset = self.collectionView!.contentOffset.x - self.collectionView!.bounds.size.width / 2
+        }
+        
+        let targetRect = CGRect(x:newProposedOffset, y:0, width:self.collectionView!.bounds.size.width, height:self.collectionView!.bounds.size.height)
+        
+        for layoutAttributes in super.layoutAttributesForElements(in: targetRect)! {
+            let itemOffset = layoutAttributes.frame.origin.x
+            if (abs(itemOffset - newProposedOffset) < abs(offsetAdjustment)) {
+                offsetAdjustment = itemOffset - newProposedOffset
             }
         }
         
-        return CGPoint(x:currentOffset + offsetAdjustment, y:proposedContentOffset.y)
+        return CGPoint(x:newProposedOffset + offsetAdjustment, y:proposedContentOffset.y)
     }
 }
