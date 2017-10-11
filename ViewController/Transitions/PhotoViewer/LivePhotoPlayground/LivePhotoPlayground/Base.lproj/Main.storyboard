@@ -76,7 +76,7 @@ Cg
                             <constraints>
                                 <constraint firstItem="alE-mB-FuX" firstAttribute="centerY" secondItem="WIN-fT-6wK" secondAttribute="centerY" id="LfI-vM-mUU"/>
                                 <constraint firstItem="alE-mB-FuX" firstAttribute="centerX" secondItem="WIN-fT-6wK" secondAttribute="centerX" id="bFk-fF-2Sw"/>
-                                <constraint firstItem="alE-mB-FuX" firstAttribute="leading" secondItem="WIN-fT-6wK" secondAttribute="leading" constant="8" id="jgb-2f-6Yo"/>
+                                <constraint firstItem="alE-mB-FuX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WIN-fT-6wK" secondAttribute="leading" id="jgb-2f-6Yo"/>
                                 <constraint firstAttribute="trailing" secondItem="alE-mB-FuX" secondAttribute="trailing" constant="8" id="z9c-ac-QWz"/>
                             </constraints>
                         </view>
@@ -121,24 +121,44 @@ Cg
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ntc-yg-hwz">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nCF-Bg-SUc" customClass="CustomCollectionView" customModule="LivePhotoPlayground" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="v5y-Rq-mq3" customClass="PhotosCollectionViewFlowLayout" customModule="LivePhotoPlayground" customModuleProvider="target">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCell" id="PTe-go-WjB" customClass="LivePhotoCollectionViewCell" customModule="LivePhotoPlayground" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Llw-w1-Qq0" id="C9S-DB-59G"/>
+                                    <outlet property="delegate" destination="Llw-w1-Qq0" id="10Y-4H-H25"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="NnZ-ev-qE0" firstAttribute="top" secondItem="Ntc-yg-hwz" secondAttribute="bottom" id="1oC-vW-SsN"/>
-                            <constraint firstItem="Ntc-yg-hwz" firstAttribute="leading" secondItem="3NT-0v-VIA" secondAttribute="leading" id="7tg-FL-0ac"/>
-                            <constraint firstAttribute="trailing" secondItem="Ntc-yg-hwz" secondAttribute="trailing" id="N3f-se-6U4"/>
-                            <constraint firstItem="Ntc-yg-hwz" firstAttribute="top" secondItem="3NT-0v-VIA" secondAttribute="top" id="bG4-7m-sYe"/>
+                            <constraint firstAttribute="trailing" secondItem="nCF-Bg-SUc" secondAttribute="trailing" id="7d7-ed-QMP"/>
+                            <constraint firstItem="NnZ-ev-qE0" firstAttribute="top" secondItem="nCF-Bg-SUc" secondAttribute="bottom" id="9G2-tb-lig"/>
+                            <constraint firstItem="nCF-Bg-SUc" firstAttribute="leading" secondItem="3NT-0v-VIA" secondAttribute="leading" id="T8n-e9-BwZ"/>
+                            <constraint firstItem="nCF-Bg-SUc" firstAttribute="top" secondItem="3NT-0v-VIA" secondAttribute="top" id="uGF-Pd-hk5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1of-e4-syb">
                         <barButtonItem key="backBarButtonItem" title=" " id="TuE-Vp-y4w"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="contentView" destination="Ntc-yg-hwz" id="0Pc-d4-BDG"/>
+                        <outlet property="photosCollectionView" destination="nCF-Bg-SUc" id="RR0-He-Qv3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ab-I8-nNt" userLabel="First Responder" sceneMemberID="firstResponder"/>

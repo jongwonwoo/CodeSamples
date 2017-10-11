@@ -41,8 +41,6 @@ class LivePhotosViewController: UICollectionViewController {
         }
     }
     
-    fileprivate var indexPathForPlayingCell: IndexPath?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -243,8 +241,8 @@ extension LivePhotosViewController {
                 let photos = self.photos
                 else { return }
             
-            let photo = photos[indexPath.item]
-            livePhotoViewController.asset = photo
+            livePhotoViewController.photos = photos
+            livePhotoViewController.selectedIndexPath = indexPath
         }
     }
 }
