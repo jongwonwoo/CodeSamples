@@ -140,11 +140,23 @@ class PhotosCollectionViewFlowLayout: UICollectionViewFlowLayout {
         let currentOffset = self.collectionView!.contentOffset.x
         let targetRect = CGRect(x:currentOffset, y:0, width:self.collectionView!.bounds.size.width, height:self.collectionView!.bounds.size.height)
         
-        let leftToRight = currentOffset < proposedContentOffset.x
-        if let layoutAttributes = leftToRight ? super.layoutAttributesForElements(in: targetRect)?.last : super.layoutAttributesForElements(in: targetRect)?.first {
-            let itemOffset = layoutAttributes.frame.origin.x
-            if (abs(itemOffset - currentOffset) < abs(offsetAdjustment)) {
-                offsetAdjustment = itemOffset - currentOffset
+        if velocity.x == 0 {
+            let horizontalOffset = proposedContentOffset.x
+            for layoutAttributes in super.layoutAttributesForElements(in: targetRect)! {
+                let itemOffset = layoutAttributes.frame.origin.x
+                if (abs(itemOffset - horizontalOffset) < abs(offsetAdjustment)) {
+                    offsetAdjustment = itemOffset - horizontalOffset
+                }
+            }
+            
+            return CGPoint(x:proposedContentOffset.x + offsetAdjustment, y:proposedContentOffset.y)
+        } else {
+            let leftToRight = velocity.x > 0
+            if let layoutAttributes = leftToRight ? super.layoutAttributesForElements(in: targetRect)?.last : super.layoutAttributesForElements(in: targetRect)?.first {
+                let itemOffset = layoutAttributes.frame.origin.x
+                if (abs(itemOffset - currentOffset) < abs(offsetAdjustment)) {
+                    offsetAdjustment = itemOffset - currentOffset
+                }
             }
         }
         
