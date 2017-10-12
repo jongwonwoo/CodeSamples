@@ -10,7 +10,7 @@ import UIKit
 import PhotosUI
 
 class PhotoCollectionViewCell: UICollectionViewCell {
-    private var photoView: UIImageView?
+    private var photoView: ZoomablePhotoView?
     var indexPath: IndexPath?
     
     private let photoFetcher = PhotoFetcher()
@@ -35,19 +35,23 @@ class PhotoCollectionViewCell: UICollectionViewCell {
                 makePhotoView()
             }
             
-            self.photoView?.image = image
+            self.photoView?.photo = image
         }
     }
     
     private func makePhotoView() {
-        let photoView = UIImageView.init(frame: self.contentView.bounds)
-        photoView.contentMode = .scaleAspectFit
+        let photoView = ZoomablePhotoView.init(frame: CGRect.zero)
+        photoView.delegate = self
+        photoView.maximumZoomScale = 3.0
+        photoView.backgroundColor = .clear
         photoView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(photoView)
+        
         photoView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 0).isActive = true
         photoView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: 0).isActive = true
         photoView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 0).isActive = true
         photoView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 0).isActive = true
+        
         self.photoView = photoView
     }
     
@@ -64,5 +68,13 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         asset = nil
         
         print(#function + " \(self.indexPath!)")
+    }
+}
+
+extension PhotoCollectionViewCell: ZoomablePhotoViewDelegate {
+    func zoomablePhotoViewWillBeginZooming(_ view: ZoomablePhotoView) {
+    }
+    
+    func zoomablePhotoViewDidEndZooming(_ view: ZoomablePhotoView, atScale scale: CGFloat) {
     }
 }
