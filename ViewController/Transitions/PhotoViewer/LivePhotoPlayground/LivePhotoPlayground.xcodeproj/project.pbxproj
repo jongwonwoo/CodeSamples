@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C3B2C681F8EF62700EFD278 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3B2C671F8EF62600EFD278 /* PhotoCollectionViewCell.swift */; };
 		0C41436F1DAC7AAF00F131F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C41436E1DAC7AAF00F131F9 /* AppDelegate.swift */; };
 		0C4143741DAC7AAF00F131F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C4143721DAC7AAF00F131F9 /* Main.storyboard */; };
 		0C4143761DAC7AAF00F131F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C4143751DAC7AAF00F131F9 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C3B2C671F8EF62600EFD278 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		0C41436B1DAC7AAF00F131F9 /* LivePhotoPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LivePhotoPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C41436E1DAC7AAF00F131F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C4143731DAC7AAF00F131F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				0C9C8DD21DB9AC85001768D4 /* LivePhotosViewController.swift */,
 				0C9C8DD41DB9B057001768D4 /* LivePhotoCollectionViewCell.swift */,
 				0CB71A461DC2E86E008831F9 /* LivePhotoViewController.swift */,
+				0C3B2C671F8EF62600EFD278 /* PhotoCollectionViewCell.swift */,
 			);
 			path = LivePhotoPlayground;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				0CDEC7041DCC0FCB0046EB77 /* PhotoFetcher.swift in Sources */,
 				0C9C8DD51DB9B057001768D4 /* LivePhotoCollectionViewCell.swift in Sources */,
 				0C9C8DD31DB9AC85001768D4 /* LivePhotosViewController.swift in Sources */,
+				0C3B2C681F8EF62700EFD278 /* PhotoCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
