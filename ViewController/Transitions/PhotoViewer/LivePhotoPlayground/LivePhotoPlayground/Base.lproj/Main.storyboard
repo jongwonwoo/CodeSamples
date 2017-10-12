@@ -112,7 +112,7 @@ Cg
         <!--Live Photo View Controller-->
         <scene sceneID="h5p-pw-hgq">
             <objects>
-                <viewController id="Llw-w1-Qq0" customClass="LivePhotoViewController" customModule="LivePhotoPlayground" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Llw-w1-Qq0" customClass="LivePhotoViewController" customModule="LivePhotoPlayground" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W1A-xt-hmq"/>
                         <viewControllerLayoutGuide type="bottom" id="NnZ-ev-qE0"/>
@@ -149,9 +149,9 @@ Cg
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="nCF-Bg-SUc" secondAttribute="trailing" id="7d7-ed-QMP"/>
-                            <constraint firstItem="NnZ-ev-qE0" firstAttribute="top" secondItem="nCF-Bg-SUc" secondAttribute="bottom" id="9G2-tb-lig"/>
-                            <constraint firstItem="nCF-Bg-SUc" firstAttribute="leading" secondItem="3NT-0v-VIA" secondAttribute="leading" id="T8n-e9-BwZ"/>
-                            <constraint firstItem="nCF-Bg-SUc" firstAttribute="top" secondItem="3NT-0v-VIA" secondAttribute="top" id="uGF-Pd-hk5"/>
+                            <constraint firstAttribute="bottom" secondItem="nCF-Bg-SUc" secondAttribute="bottom" id="XxW-Kq-p5u"/>
+                            <constraint firstItem="nCF-Bg-SUc" firstAttribute="leading" secondItem="3NT-0v-VIA" secondAttribute="leading" id="hsv-oq-GbN"/>
+                            <constraint firstItem="nCF-Bg-SUc" firstAttribute="top" secondItem="3NT-0v-VIA" secondAttribute="top" id="olg-mO-ii5"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1of-e4-syb">
