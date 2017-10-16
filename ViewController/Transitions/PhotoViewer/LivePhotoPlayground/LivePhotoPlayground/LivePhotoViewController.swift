@@ -32,8 +32,11 @@ class LivePhotoViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        photosCollectionView.isPagingEnabled = true
+        photosCollectionView.frame = view.frame.insetBy(dx: -20.0, dy: 0.0)
     }
     
     override func didReceiveMemoryWarning() {
@@ -103,6 +106,16 @@ extension LivePhotoViewController: UICollectionViewDataSource {
 extension LivePhotoViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     }
+    
+    func collectionView(_ collectionView: UICollectionView, targetContentOffsetForProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
+        guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return proposedContentOffset }
+        
+        guard let indexPath = collectionView.indexPathsForVisibleItems.last, let layoutAttributes = flowLayout.layoutAttributesForItem(at: indexPath) else {
+            return proposedContentOffset
+        }
+        
+        return CGPoint(x: layoutAttributes.center.x - (layoutAttributes.size.width / 2.0) - (flowLayout.minimumLineSpacing / 2.0), y: 0)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -116,46 +129,16 @@ extension LivePhotoViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         //        print(#function)
         
-        return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+        return UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         //        print(#function)
         
-        return 20
+        return 40
     }
     
-    
-}
-
-class PhotosCollectionViewFlowLayout: UICollectionViewFlowLayout {
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        self.scrollDirection = .horizontal
-    }
-    
-    override func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-        var offsetAdjustment = CGFloat.greatestFiniteMagnitude
-        var newProposedOffset = CGFloat(0)
-        
-        if velocity.x == 0 {
-            newProposedOffset = proposedContentOffset.x
-        } else if velocity.x > 0 {
-            newProposedOffset = self.collectionView!.contentOffset.x + self.collectionView!.bounds.size.width / 2
-        } else if velocity.x < 0 {
-            newProposedOffset = self.collectionView!.contentOffset.x - self.collectionView!.bounds.size.width / 2
-        }
-        
-        let targetRect = CGRect(x:newProposedOffset, y:0, width:self.collectionView!.bounds.size.width, height:self.collectionView!.bounds.size.height)
-        
-        for layoutAttributes in super.layoutAttributesForElements(in: targetRect)! {
-            let itemOffset = layoutAttributes.frame.origin.x
-            if (abs(itemOffset - newProposedOffset) < abs(offsetAdjustment)) {
-                offsetAdjustment = itemOffset - newProposedOffset
-            }
-        }
-        
-        return CGPoint(x:newProposedOffset + offsetAdjustment, y:proposedContentOffset.y)
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
