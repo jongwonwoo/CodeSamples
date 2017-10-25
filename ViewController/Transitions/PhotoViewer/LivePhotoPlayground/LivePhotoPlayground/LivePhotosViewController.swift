@@ -27,6 +27,8 @@ class CustomCollectionView: UICollectionView {
 }
 
 class LivePhotosViewController: UICollectionViewController {
+    let transition = RevealAnimator()
+    
     fileprivate let reuseIdentifier = "LivePhotoCell"
     @IBOutlet weak var emptyMessageView: UIView!
     
@@ -43,6 +45,8 @@ class LivePhotosViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationController?.delegate = self
         
         self.requestPhotoLibraryAuthorization(authorized: { [unowned self] in
             DispatchQueue.main.async {
@@ -244,5 +248,16 @@ extension LivePhotosViewController {
             livePhotoViewController.photos = photos
             livePhotoViewController.selectedIndexPath = indexPath
         }
+    }
+}
+
+extension LivePhotosViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if operation == .push {
+            transition.operation = operation
+            return transition
+        }
+        
+        return nil
     }
 }
