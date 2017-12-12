@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0C3B2C681F8EF62700EFD278 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3B2C671F8EF62600EFD278 /* PhotoCollectionViewCell.swift */; };
+		0C3B2C6C1F8EFC9300EFD278 /* ZoomablePhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C3B2C6B1F8EFB2600EFD278 /* ZoomablePhotoView.swift */; };
+		0C3B2C6D1F8EFC9C00EFD278 /* ZoomablePhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C3B2C6A1F8EFB2600EFD278 /* ZoomablePhotoView.xib */; };
 		0C41436F1DAC7AAF00F131F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C41436E1DAC7AAF00F131F9 /* AppDelegate.swift */; };
 		0C4143741DAC7AAF00F131F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C4143721DAC7AAF00F131F9 /* Main.storyboard */; };
 		0C4143761DAC7AAF00F131F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C4143751DAC7AAF00F131F9 /* Assets.xcassets */; };
 		0C4143791DAC7AAF00F131F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C4143771DAC7AAF00F131F9 /* LaunchScreen.storyboard */; };
 		0C4143841DAC7AAF00F131F9 /* LivePhotoPlaygroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4143831DAC7AAF00F131F9 /* LivePhotoPlaygroundTests.swift */; };
+		0C519C8F1FA0285F00DA8415 /* RevealAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C519C8E1FA0285F00DA8415 /* RevealAnimator.swift */; };
 		0C9C8DD31DB9AC85001768D4 /* LivePhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C8DD21DB9AC85001768D4 /* LivePhotosViewController.swift */; };
 		0C9C8DD51DB9B057001768D4 /* LivePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9C8DD41DB9B057001768D4 /* LivePhotoCollectionViewCell.swift */; };
 		0CB71A471DC2E86E008831F9 /* LivePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB71A461DC2E86E008831F9 /* LivePhotoViewController.swift */; };
@@ -31,6 +34,8 @@
 
 /* Begin PBXFileReference section */
 		0C3B2C671F8EF62600EFD278 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		0C3B2C6A1F8EFB2600EFD278 /* ZoomablePhotoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ZoomablePhotoView.xib; sourceTree = "<group>"; };
+		0C3B2C6B1F8EFB2600EFD278 /* ZoomablePhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomablePhotoView.swift; sourceTree = "<group>"; };
 		0C41436B1DAC7AAF00F131F9 /* LivePhotoPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LivePhotoPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C41436E1DAC7AAF00F131F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C4143731DAC7AAF00F131F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +45,7 @@
 		0C41437F1DAC7AAF00F131F9 /* LivePhotoPlaygroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LivePhotoPlaygroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C4143831DAC7AAF00F131F9 /* LivePhotoPlaygroundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LivePhotoPlaygroundTests.swift; sourceTree = "<group>"; };
 		0C4143851DAC7AAF00F131F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0C519C8E1FA0285F00DA8415 /* RevealAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealAnimator.swift; sourceTree = "<group>"; };
 		0C9C8DD21DB9AC85001768D4 /* LivePhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePhotosViewController.swift; sourceTree = "<group>"; };
 		0C9C8DD41DB9B057001768D4 /* LivePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		0CB71A461DC2E86E008831F9 /* LivePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LivePhotoViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +70,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C3B2C691F8EFB2600EFD278 /* ZoomablePhotoView */ = {
+			isa = PBXGroup;
+			children = (
+				0C3B2C6A1F8EFB2600EFD278 /* ZoomablePhotoView.xib */,
+				0C3B2C6B1F8EFB2600EFD278 /* ZoomablePhotoView.swift */,
+			);
+			path = ZoomablePhotoView;
+			sourceTree = "<group>";
+		};
 		0C4143621DAC7AAF00F131F9 = {
 			isa = PBXGroup;
 			children = (
@@ -87,8 +102,10 @@
 			children = (
 				0CB71A481DC312A4008831F9 /* Resources */,
 				0C41436E1DAC7AAF00F131F9 /* AppDelegate.swift */,
+				0C3B2C691F8EFB2600EFD278 /* ZoomablePhotoView */,
 				0CB68E461DD05FBB00F3598B /* Photos */,
 				0C9C8DD21DB9AC85001768D4 /* LivePhotosViewController.swift */,
+				0C519C8E1FA0285F00DA8415 /* RevealAnimator.swift */,
 				0C9C8DD41DB9B057001768D4 /* LivePhotoCollectionViewCell.swift */,
 				0CB71A461DC2E86E008831F9 /* LivePhotoViewController.swift */,
 				0C3B2C671F8EF62600EFD278 /* PhotoCollectionViewCell.swift */,
@@ -209,6 +226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C3B2C6D1F8EFC9C00EFD278 /* ZoomablePhotoView.xib in Resources */,
 				0C4143791DAC7AAF00F131F9 /* LaunchScreen.storyboard in Resources */,
 				0C4143761DAC7AAF00F131F9 /* Assets.xcassets in Resources */,
 				0C4143741DAC7AAF00F131F9 /* Main.storyboard in Resources */,
@@ -246,9 +264,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C41436F1DAC7AAF00F131F9 /* AppDelegate.swift in Sources */,
+				0C519C8F1FA0285F00DA8415 /* RevealAnimator.swift in Sources */,
 				0CB71A471DC2E86E008831F9 /* LivePhotoViewController.swift in Sources */,
 				0CDEC7041DCC0FCB0046EB77 /* PhotoFetcher.swift in Sources */,
 				0C9C8DD51DB9B057001768D4 /* LivePhotoCollectionViewCell.swift in Sources */,
+				0C3B2C6C1F8EFC9300EFD278 /* ZoomablePhotoView.swift in Sources */,
 				0C9C8DD31DB9AC85001768D4 /* LivePhotosViewController.swift in Sources */,
 				0C3B2C681F8EF62700EFD278 /* PhotoCollectionViewCell.swift in Sources */,
 			);
