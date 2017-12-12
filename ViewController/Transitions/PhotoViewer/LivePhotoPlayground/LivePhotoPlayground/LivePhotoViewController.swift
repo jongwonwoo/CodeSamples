@@ -23,6 +23,8 @@ class LivePhotoViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        photosCollectionView.backgroundColor = .red
+        
         
         photosCollectionView.reloadDataWithCompletion {
             self.photosCollectionView.reloadDataCompletionBlock = nil
@@ -99,13 +101,13 @@ extension LivePhotoViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         print(#function + " \(indexPath)")
+        
+        
     }
 }
 
 // MARK: - UICollectionView delegate
 extension LivePhotoViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    }
     
     func collectionView(_ collectionView: UICollectionView, targetContentOffsetForProposedContentOffset proposedContentOffset: CGPoint) -> CGPoint {
         guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return proposedContentOffset }

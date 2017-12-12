@@ -192,6 +192,7 @@
 				TargetAttributes = {
 					0C41436A1DAC7AAF00F131F9 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = QFKRB33RPM;
 						ProvisioningStyle = Automatic;
 					};
 					0C41437E1DAC7AAF00F131F9 = {
@@ -411,7 +412,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QFKRB33RPM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -429,7 +430,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QFKRB33RPM;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",

@@ -59,6 +59,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         
         print(#function + " of cell \(self.indexPath!)")
+        
+        self.contentView.backgroundColor = .blue
     }
     
     override func prepareForReuse() {
