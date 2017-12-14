@@ -71,23 +71,7 @@
             </objects>
             <point key="canvasLocation" x="-358" y="171"/>
         </scene>
-        <!--Item 2-->
-        <scene sceneID="YZh-2P-ciB">
-            <objects>
-                <viewController id="Asr-tj-qIN" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="1Yy-xR-r0C">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="KK8-U1-Nbg"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="fV4-Mo-1S0"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Vt5-1c-IfU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="542" y="1511"/>
-        </scene>
-        <!--Item 1-->
+        <!--Default-->
         <scene sceneID="uI6-I7-Sg4">
             <objects>
                 <viewController id="Z48-ms-4IQ" sceneMemberID="viewController">
@@ -122,12 +106,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q9b-WB-MAY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="jki-9S-ROb"/>
+                    <tabBarItem key="tabBarItem" title="Default" id="jki-9S-ROb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KEM-LX-f7O" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="YYy-da-b14" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="542" y="846"/>
+            <point key="canvasLocation" x="548" y="1179"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="GwP-5u-WLE">
@@ -140,17 +124,18 @@
                     </tabBar>
                     <connections>
                         <segue destination="Z48-ms-4IQ" kind="relationship" relationship="viewControllers" id="vrH-yV-cEe"/>
-                        <segue destination="Asr-tj-qIN" kind="relationship" relationship="viewControllers" id="THM-v5-9vv"/>
+                        <segue destination="weB-qS-tjb" kind="relationship" relationship="viewControllers" id="N5V-lT-h6U"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ee7-jG-0FG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-410" y="1179"/>
+            <point key="canvasLocation" x="-359" y="1179"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--w/ Navigation-->
         <scene sceneID="PqX-PR-3ET">
             <objects>
                 <navigationController id="weB-qS-tjb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="w/ Navigation" id="ukj-nY-Df4"/>
                     <navigationItem key="navigationItem" id="Ybp-Vj-sNf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="264-uC-wM9">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -162,7 +147,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TIj-1X-1d7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="518" y="170"/>
+            <point key="canvasLocation" x="548" y="170"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MZh-7W-4g5">
@@ -173,7 +158,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wTg-FZ-TY5">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICi-rn-fMT">
                                         <rect key="frame" x="149" y="10" width="77" height="30"/>
@@ -227,7 +212,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="smM-nu-URE">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -249,4 +234,7 @@
             <point key="canvasLocation" x="2193" y="163"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="N5V-lT-h6U"/>
+    </inferredMetricsTieBreakers>
 </document>
