@@ -14,6 +14,7 @@
 		0CBC45991FDF92A500D6BE0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CBC45971FDF92A500D6BE0B /* LaunchScreen.storyboard */; };
 		0CBC45A11FE0E19300D6BE0B /* NavigationRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBC45A01FE0E19300D6BE0B /* NavigationRootViewController.swift */; };
 		0CBC45A31FE0E20200D6BE0B /* NavigationChildViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBC45A21FE0E20100D6BE0B /* NavigationChildViewController.swift */; };
+		0CBC45A71FE24DEB00D6BE0B /* SafeAreaBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBC45A61FE24DEB00D6BE0B /* SafeAreaBorderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		0CBC459A1FDF92A500D6BE0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0CBC45A01FE0E19300D6BE0B /* NavigationRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRootViewController.swift; sourceTree = "<group>"; };
 		0CBC45A21FE0E20100D6BE0B /* NavigationChildViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationChildViewController.swift; sourceTree = "<group>"; };
+		0CBC45A61FE24DEB00D6BE0B /* SafeAreaBorderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAreaBorderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				0CBC459A1FDF92A500D6BE0B /* Info.plist */,
 				0CBC45A01FE0E19300D6BE0B /* NavigationRootViewController.swift */,
 				0CBC45A21FE0E20100D6BE0B /* NavigationChildViewController.swift */,
+				0CBC45A61FE24DEB00D6BE0B /* SafeAreaBorderView.swift */,
 			);
 			path = SafeAreaSample;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CBC45911FDF92A500D6BE0B /* ViewController.swift in Sources */,
+				0CBC45A71FE24DEB00D6BE0B /* SafeAreaBorderView.swift in Sources */,
 				0CBC45A31FE0E20200D6BE0B /* NavigationChildViewController.swift in Sources */,
 				0CBC45A11FE0E19300D6BE0B /* NavigationRootViewController.swift in Sources */,
 				0CBC458F1FDF92A500D6BE0B /* AppDelegate.swift in Sources */,
