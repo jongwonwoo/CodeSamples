@@ -41,6 +41,22 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func changeAdditionalSafeAreaInsets(_ sender: Any) {
+        if #available(iOS 11.0, *) {
+            additionalSafeAreaInsets = UIEdgeInsets(top: 50, left: 20, bottom: 50, right: 20)
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
+    @IBAction func resetAdditionalSafeAreaInsets(_ sender: Any) {
+        if #available(iOS 11.0, *) {
+            additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    
     @IBAction func unwindToVC(segue:UIStoryboardSegue) { }
 }
 
