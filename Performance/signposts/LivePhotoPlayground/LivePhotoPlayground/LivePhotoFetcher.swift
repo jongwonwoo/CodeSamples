@@ -30,8 +30,12 @@ class LivePhotoFetcher: NSObject, PHPhotoLibraryChangeObserver {
     }
     
     func fetchLivePhoto(for asset: PHAsset, targetSize: CGSize, contentMode: PHImageContentMode, completion: @escaping (PHLivePhoto?) -> Swift.Void) {
+        fetchLivePhoto(for: asset, targetSize: targetSize, contentMode: contentMode, prefferedLowQuality: false, completion: completion)
+    }
+    
+    func fetchLivePhoto(for asset: PHAsset, targetSize: CGSize, contentMode: PHImageContentMode, prefferedLowQuality: Bool, completion: @escaping (PHLivePhoto?) -> Swift.Void) {
         let options = PHLivePhotoRequestOptions()
-        options.deliveryMode = .highQualityFormat
+        options.deliveryMode = prefferedLowQuality ? .fastFormat : .highQualityFormat
         self.imageManager.requestLivePhoto(for: asset, targetSize: targetSize, contentMode: contentMode, options: options, resultHandler: { (result, info) in
             completion(result)
         })

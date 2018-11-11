@@ -9,6 +9,13 @@
 import UIKit
 import Photos
 
+import os.signpost
+
+struct SignpostLog {
+    static let cellForItem = OSLog(subsystem: "com.jongwonwoo.livephotoviewer", category: "cellForItem")
+}
+
+
 class CustomCollectionView: UICollectionView {
     
     var reloadDataCompletionBlock: (() -> Void)?
@@ -53,9 +60,6 @@ class LivePhotosViewController: UICollectionViewController {
                 guard let collectionView = self.collectionView as? CustomCollectionView else { return }
                 collectionView.reloadDataWithCompletion {
                     collectionView.reloadDataCompletionBlock = nil
-//                    guard let count = self.livePhotos?.count else { return }
-//                    self.collectionView?.scrollToItem(at: IndexPath.init(item: count - 1, section: 0),
-//                                                      at: .centeredVertically, animated: true)
                 }
                 
                 self.registerForLivePhotosDidChange()
@@ -185,7 +189,9 @@ extension LivePhotosViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print(#function + " \(indexPath)")
+        let uuid = UUID.ReferenceType()
+        let signpostId = OSSignpostID(log: SignpostLog.cellForItem, object: uuid)
+        os_signpost(.begin, log: SignpostLog.cellForItem, name: "configure cell", signpostID: signpostId, "%@", indexPath.description)
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! LivePhotoCollectionViewCell
         
@@ -195,9 +201,11 @@ extension LivePhotosViewController {
             let itemSize = collectionViewLayout.itemSize
             let scale = UIScreen.main.scale
             let targetSize = CGSize.init(width: itemSize.width * scale, height: itemSize.height * scale)
-            self.livePhotoFetcher.fetchLivePhoto(for: asset, targetSize: targetSize, contentMode: .aspectFill, completion: { livePhoto in
+            self.livePhotoFetcher.fetchLivePhoto(for: asset, targetSize: targetSize, contentMode: .aspectFill, prefferedLowQuality: false, completion: { livePhoto in
                 DispatchQueue.main.async {
                     cell.livePhoto = livePhoto;
+                    
+                    os_signpost(.end, log: SignpostLog.cellForItem, name: "configure cell", signpostID: signpostId)
                 }
             })
         }
@@ -208,10 +216,8 @@ extension LivePhotosViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print(#function + " \(indexPath)")
     }
     override func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print(#function + " \(indexPath)")
     }
 }
 
@@ -264,8 +270,6 @@ extension LivePhotosViewController {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension LivePhotosViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        print(#function + " \(indexPath)")
-        
         let itemsPerRow: CGFloat = 1
         let paddingSpace = itemsPerRow + 1
         let availableWidth = view.frame.width - paddingSpace
@@ -275,14 +279,10 @@ extension LivePhotosViewController : UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        print(#function)
-        
         return UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        print(#function)
-        
         return 1
     }
 }
