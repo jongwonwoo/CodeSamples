@@ -60,6 +60,7 @@ class LivePhotosViewController: UICollectionViewController {
                 guard let collectionView = self.collectionView as? CustomCollectionView else { return }
                 collectionView.reloadDataWithCompletion {
                     collectionView.reloadDataCompletionBlock = nil
+                    self.changePhotosInHighQuality()
                 }
                 
                 self.registerForLivePhotosDidChange()
@@ -201,7 +202,7 @@ extension LivePhotosViewController {
             let itemSize = collectionViewLayout.itemSize
             let scale = UIScreen.main.scale
             let targetSize = CGSize.init(width: itemSize.width * scale, height: itemSize.height * scale)
-            self.livePhotoFetcher.fetchLivePhoto(for: asset, targetSize: targetSize, contentMode: .aspectFill, prefferedLowQuality: false, completion: { livePhoto in
+            self.livePhotoFetcher.fetchLivePhoto(for: asset, targetSize: targetSize, contentMode: .aspectFill, prefferedLowQuality: true, completion: { livePhoto in
                 DispatchQueue.main.async {
                     cell.livePhoto = livePhoto;
                     
@@ -235,16 +236,41 @@ extension LivePhotosViewController {
     
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if !decelerate {
+            changePhotosInHighQuality()
             startPlaybackOfLivePhotoAtVisibleCells()
         }
     }
     
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        changePhotosInHighQuality()
         startPlaybackOfLivePhotoAtVisibleCells()
     }
     
     override func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        changePhotosInHighQuality()
         startPlaybackOfLivePhotoAtVisibleCells()
+    }
+    
+    fileprivate func changePhotosInHighQuality() {
+        if let livePhotos = self.livePhotos {
+            let collectionViewLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+            let itemSize = collectionViewLayout.itemSize
+            let scale = UIScreen.main.scale
+            let targetSize = CGSize.init(width: itemSize.width * scale, height: itemSize.height * scale)
+            self.collectionView?.visibleCells.forEach({ [unowned self] cell in
+                guard let indexPath = self.collectionView.indexPath(for: cell) else {
+                    return
+                }
+                let asset = livePhotos[indexPath.item]
+                self.livePhotoFetcher.fetchLivePhoto(for: asset, targetSize: targetSize, contentMode: .aspectFill, prefferedLowQuality: false, completion: { livePhoto in
+                    DispatchQueue.main.async {
+                        if let livePhotoCell = cell as? LivePhotoCollectionViewCell {
+                            livePhotoCell.livePhoto = livePhoto;
+                        }
+                    }
+                })
+            })
+        }
     }
     
     fileprivate func startPlaybackOfLivePhotoAtVisibleCells() {

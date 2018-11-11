@@ -45,14 +45,10 @@ class LivePhotoCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        print(#function + " of cell \(self.indexPath!)")
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
-        print(#function + " \(self.indexPath!)")
         
         livePhotoView?.stopPlayback()
     }
