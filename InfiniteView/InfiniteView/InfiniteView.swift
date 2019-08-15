@@ -8,11 +8,30 @@
 
 import UIKit
 
+protocol InfiniteViewDelegate: class {
+    func didChangeNextViewToCurrentView()
+    func didChangePreviousViewToCurrentView()
+    
+    func itemForPreviousView() -> String
+    func itemForCurrentView() -> String
+    func itemForNextView() -> String
+}
+
 class InfiniteView: UIView {
 
-    var currentView: UIView?
-    var prevView: UIView?
-    var nextView: UIView?
+    weak var delegate: InfiniteViewDelegate? {
+        didSet{
+            DispatchQueue.main.async {
+                self.prevView.titleLabel.text = self.delegate?.itemForPreviousView()
+                self.currentView.titleLabel.text = self.delegate?.itemForCurrentView()
+                self.nextView.titleLabel.text = self.delegate?.itemForNextView()
+            }
+        }
+    }
+    
+    weak var currentView: ItemView!
+    weak var prevView: ItemView!
+    weak var nextView: ItemView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,17 +46,17 @@ class InfiniteView: UIView {
         swipeRight.direction = .right
         self.addGestureRecognizer(swipeRight)
         
-        let blueView = UIView.init(frame: self.bounds.offsetBy(dx: -self.bounds.size.width, dy: 0))
+        let blueView = ItemView.init(frame: self.bounds.offsetBy(dx: -self.bounds.size.width, dy: 0))
         blueView.backgroundColor = .blue
         self.addSubview(blueView)
         self.prevView = blueView
         
-        let greenView = UIView.init(frame: self.bounds)
+        let greenView = ItemView.init(frame: self.bounds)
         greenView.backgroundColor = .green
         self.addSubview(greenView)
         self.nextView = greenView
         
-        let redView = UIView.init(frame: self.bounds)
+        let redView = ItemView.init(frame: self.bounds)
         redView.backgroundColor = .red
         self.addSubview(redView)
         self.currentView = redView
@@ -57,22 +76,27 @@ class InfiniteView: UIView {
     }
     
     func moveCurrentViewToPreviousView() {
+        delegate?.didChangeNextViewToCurrentView()
+        
         let oldNextView = self.nextView
         self.nextView = self.prevView
         self.prevView = self.currentView
         self.currentView = oldNextView
         
         UIView.animate(withDuration: 0.3, animations: {
-            self.prevView?.frame = self.bounds.offsetBy(dx: -self.bounds.size.width, dy: 0)
+            self.prevView.frame = self.bounds.offsetBy(dx: -self.bounds.size.width, dy: 0)
         }) { completed in
             if completed {
-                self.nextView?.frame = self.bounds
+                self.nextView.frame = self.bounds
+                self.nextView.titleLabel.text = self.delegate?.itemForNextView()
                 self.bringSubviewToFront(self.currentView!)
             }
         }
     }
     
     func movePreviousViewToCurrentView() {
+        delegate?.didChangePreviousViewToCurrentView()
+        
         let oldCurrentView = self.currentView
         self.currentView = self.prevView
         self.prevView = self.nextView
@@ -80,11 +104,30 @@ class InfiniteView: UIView {
         
         self.bringSubviewToFront(self.currentView!)
         UIView.animate(withDuration: 0.3, animations: {
-            self.currentView?.frame = self.bounds
+            self.currentView.frame = self.bounds
         }) { completed in
             if completed {
-                self.prevView?.frame = self.bounds.offsetBy(dx: -self.bounds.size.width, dy: 0)
+                self.prevView.frame = self.bounds.offsetBy(dx: -self.bounds.size.width, dy: 0)
+                self.prevView.titleLabel.text = self.delegate?.itemForPreviousView()
             }
         }
+    }
+}
+
+
+class ItemView: UIView {
+    var titleLabel: UILabel!
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        let label = UILabel.init(frame: self.bounds)
+        label.textAlignment = .center
+        self.addSubview(label)
+        self.titleLabel = label
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
