@@ -38,13 +38,16 @@ class InfiniteView: UIView {
         self.backgroundColor = .lightGray
         self.clipsToBounds = true
         
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
-        swipeLeft.direction = .left
-        self.addGestureRecognizer(swipeLeft)
-        
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
-        swipeRight.direction = .right
-        self.addGestureRecognizer(swipeRight)
+//        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
+//        swipeLeft.direction = .left
+//        self.addGestureRecognizer(swipeLeft)
+//
+//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
+//        swipeRight.direction = .right
+//        self.addGestureRecognizer(swipeRight)
+
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
+        self.addGestureRecognizer(panGesture)
         
         let blueView = ItemView.init(frame: self.bounds.offsetBy(dx: -self.bounds.size.width, dy: 0))
         blueView.backgroundColor = .blue
@@ -66,6 +69,86 @@ class InfiniteView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    let defaultDuration: TimeInterval = 0.3
+    var initialCenter = CGPoint()
+    weak var movingView: UIView?
+    var movingType: Int = 0
+    
+    @objc func didPan(_ gesture: UIPanGestureRecognizer) {
+        if gesture.state == .began {
+            let velocity = gesture.velocity(in: self)
+            if abs(velocity.x) > abs(velocity.y) {
+                if velocity.x < 0 {
+                    print("left")
+                    movingType = -1
+                    self.movingView = self.currentView
+                } else {
+                    print("right")
+                    movingType = 1
+                    self.movingView = self.prevView
+                }
+                
+                self.initialCenter = self.movingView!.center
+                self.bringSubviewToFront(self.movingView!)
+            }
+        }
+        
+        if gesture.state != .cancelled {
+            guard let movingView = self.movingView else {
+                return
+            }
+            
+            let transition = gesture.translation(in: self)
+            let changedX = movingView.center.x + transition.x
+            if abs(changedX) <= movingView.bounds.size.width / 2 {
+                movingView.center = CGPoint(x: changedX, y: movingView.center.y)
+                gesture.setTranslation(CGPoint.zero, in: self)
+            }
+        }
+        
+        switch gesture.state {
+        case .ended, .cancelled, .failed:
+            guard let movingView = self.movingView else {
+                return
+            }
+            
+            let duration = defaultDuration * TimeInterval((movingView.bounds.size.width - abs(initialCenter.x - movingView.center.x)) / self.bounds.size.width)
+            
+            let velocity = gesture.velocity(in: self)
+            if abs(velocity.x) > abs(velocity.y) {
+                if velocity.x < 0 {
+                    if movingType < 0 {
+                        moveCurrentViewToPreviousView(withDuration: duration)
+                    } else {
+                        let duration = defaultDuration * TimeInterval(abs(initialCenter.x - movingView.center.x) / self.bounds.size.width)
+                        UIView.animate(withDuration: duration) {
+                            movingView.center = self.initialCenter
+                        }
+                    }
+                } else {
+                    if movingType < 0 {
+                        let duration = defaultDuration * TimeInterval(abs(initialCenter.x - movingView.center.x) / self.bounds.size.width)
+                        UIView.animate(withDuration: duration) {
+                            movingView.center = self.initialCenter
+                        }
+                    } else {
+                        movePreviousViewToCurrentView(withDuration: duration)
+                    }
+                }
+            } else {
+                if movingType < 0 {
+                    moveCurrentViewToPreviousView(withDuration: duration)
+                } else {
+                    movePreviousViewToCurrentView(withDuration: duration)
+                }
+            }
+            
+            self.movingView = nil
+        default:
+            break
+        }
+    }
+    
     @objc func didSwipe(_ gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
             movePreviousViewToCurrentView()
@@ -75,7 +158,7 @@ class InfiniteView: UIView {
         }
     }
     
-    func moveCurrentViewToPreviousView() {
+    func moveCurrentViewToPreviousView(withDuration: TimeInterval = 0.3) {
         delegate?.didChangeNextViewToCurrentView()
         
         let oldNextView = self.nextView
@@ -83,7 +166,7 @@ class InfiniteView: UIView {
         self.prevView = self.currentView
         self.currentView = oldNextView
         
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: withDuration, animations: {
             self.prevView.frame = self.bounds.offsetBy(dx: -self.bounds.size.width, dy: 0)
         }) { completed in
             if completed {
@@ -94,7 +177,7 @@ class InfiniteView: UIView {
         }
     }
     
-    func movePreviousViewToCurrentView() {
+    func movePreviousViewToCurrentView(withDuration: TimeInterval = 0.3) {
         delegate?.didChangePreviousViewToCurrentView()
         
         let oldCurrentView = self.currentView
@@ -103,7 +186,7 @@ class InfiniteView: UIView {
         self.nextView = oldCurrentView
         
         self.bringSubviewToFront(self.currentView!)
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: withDuration, animations: {
             self.currentView.frame = self.bounds
         }) { completed in
             if completed {
