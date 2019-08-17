@@ -15,6 +15,7 @@
 		BEB42B4B2304B71D00B0860A /* InfiniteViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB42B4A2304B71D00B0860A /* InfiniteViewTests.swift */; };
 		BEB42B562304B71D00B0860A /* InfiniteViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB42B552304B71D00B0860A /* InfiniteViewUITests.swift */; };
 		BEB42B642304B77100B0860A /* InfiniteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB42B632304B77100B0860A /* InfiniteView.swift */; };
+		BEB42B662307CAE900B0860A /* DoublyCircularLinkedList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB42B652307CAE900B0860A /* DoublyCircularLinkedList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		BEB42B552304B71D00B0860A /* InfiniteViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteViewUITests.swift; sourceTree = "<group>"; };
 		BEB42B572304B71D00B0860A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEB42B632304B77100B0860A /* InfiniteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfiniteView.swift; sourceTree = "<group>"; };
+		BEB42B652307CAE900B0860A /* DoublyCircularLinkedList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoublyCircularLinkedList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				BEB42B352304B71900B0860A /* AppDelegate.swift */,
 				BEB42B372304B71900B0860A /* ViewController.swift */,
+				BEB42B652307CAE900B0860A /* DoublyCircularLinkedList.swift */,
 				BEB42B632304B77100B0860A /* InfiniteView.swift */,
 				BEB42B392304B71900B0860A /* Main.storyboard */,
 				BEB42B3C2304B71D00B0860A /* Assets.xcassets */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB42B662307CAE900B0860A /* DoublyCircularLinkedList.swift in Sources */,
 				BEB42B642304B77100B0860A /* InfiniteView.swift in Sources */,
 				BEB42B382304B71900B0860A /* ViewController.swift in Sources */,
 				BEB42B362304B71900B0860A /* AppDelegate.swift in Sources */,
