@@ -10,15 +10,21 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    //TODO: 이중원형연결리스트롤 바꾸고 인덱스를 없애자
-    let items = ["0", "1", "2", "3", "4", "5", "6"]
-    var currentIndex = 0
+    var items = DoublyCircularLinkedList()
+    func setupItems() {
+        for value in 0...6 {
+            items.addNode(value: "\(value)")
+        }
+        
+        items.resetCurrent()
+    }
     
     weak var infinteView: InfiniteView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setupItems()
         
         let infiniteView = InfiniteView(frame: CGRect.init(x: 50, y: 100, width: 200, height: 150))
         infiniteView.delegate = self
@@ -28,48 +34,85 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: InfiniteViewDelegate {
-    func increseCurrentIndex() {
-        currentIndex += 1
-        if (currentIndex >= items.count) {
-            currentIndex = 0
-        }
-    }
-    
-    func decreaseCurrentIndex() {
-        currentIndex -= 1
-        if (currentIndex < 0) {
-            currentIndex = items.count - 1
-        }
-    }
-    
     func didChangeNextViewToCurrentView() {
-        increseCurrentIndex()
+        items.moveNext()
     }
     
     func didChangePreviousViewToCurrentView() {
-        decreaseCurrentIndex()
+        items.movePrev()
     }
     
     func itemForPreviousView() -> String {
-        var prevIndex = currentIndex - 1
-        if (prevIndex < 0) {
-            prevIndex = items.count - 1
+        guard let value = items.prev?.value else {
+            return ""
         }
         
-        return items[prevIndex]
+        return value
     }
     
     func itemForCurrentView() -> String {
-        return items[currentIndex]
+        guard let value = items.current?.value else {
+            return ""
+        }
+        
+        return value
     }
     
     func itemForNextView() -> String {
-        var nextIndex = currentIndex + 1
-        if (nextIndex >= items.count) {
-            nextIndex = 0
+        guard let value = items.next?.value else {
+            return ""
         }
         
-        return items[nextIndex]
+        return value
     }
 }
 
+class Node: NSObject {
+    var value: String!
+    var prev: Node?
+    var next: Node?
+    
+    init(withValue value: String) {
+        super.init()
+        self.value = value
+    }
+}
+
+class DoublyCircularLinkedList: NSObject {
+    var tail: Node?
+    
+    func addNode(value: String) {
+        let newNode = Node(withValue: value)
+        if tail == nil {
+            newNode.prev = newNode
+            newNode.next = newNode
+            tail = newNode
+        } else {
+            newNode.next = tail?.next
+            newNode.prev = tail
+            newNode.next?.prev = newNode
+            tail?.next = newNode
+            tail = newNode
+        }
+    }
+    
+    var current: Node?
+    var prev: Node? {
+        return current?.prev
+    }
+    var next: Node? {
+        return current?.next
+    }
+    
+    func resetCurrent() {
+        current = tail?.next
+    }
+    
+    func moveNext() {
+        current = current?.next
+    }
+    
+    func movePrev() {
+        current = current?.prev
+    }
+}
