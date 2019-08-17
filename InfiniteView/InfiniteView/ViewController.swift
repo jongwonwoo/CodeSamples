@@ -10,10 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var items = DoublyCircularLinkedList()
+    var items = DoublyCircularLinkedList<Int>()
     func setupItems() {
         for value in 0...6 {
-            items.append("\(value)")
+            items.append(value)
         }
         
         items.resetCurrent()
@@ -43,14 +43,17 @@ extension ViewController: InfiniteViewDelegate {
     }
     
     func itemForPreviousView() -> String {
-        return items.prevValue
+        guard let value = items.prevValue else { return "" }
+        return "\(value)"
     }
     
     func itemForCurrentView() -> String {
-        return items.currentValue
+        guard let value = items.currentValue else { return "" }
+        return "\(value)"
     }
     
     func itemForNextView() -> String {
-        return items.nextValue
+        guard let value = items.nextValue else { return "" }
+        return "\(value)"
     }
 }

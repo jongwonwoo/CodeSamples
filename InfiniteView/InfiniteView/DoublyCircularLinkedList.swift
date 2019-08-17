@@ -8,21 +8,21 @@
 
 import Foundation
 
-class DoublyCircularLinkedList {
-    private class Node {
-        var value: String
-        weak var prev: Node?
-        var next: Node?
+class DoublyCircularLinkedList<T> {
+    private class Node<T> {
+        var value: T
+        weak var prev: Node<T>?
+        var next: Node<T>?
         
-        init(_ value: String) {
+        init(_ value: T) {
             self.value = value
         }
     }
     
-    private var tail: Node?
-    private var current: Node?
+    private var tail: Node<T>?
+    private var current: Node<T>?
     
-    func append(_ value: String) {
+    func append(_ value: T) {
         let newNode = Node(value)
         if tail == nil {
             newNode.prev = newNode
@@ -49,18 +49,15 @@ class DoublyCircularLinkedList {
         current = current?.prev
     }
     
-    var currentValue: String {
-        guard let currentNode = current else { return "" }
-        return currentNode.value
+    var currentValue: T? {
+        return current?.value
     }
     
-    var prevValue: String {
-        guard let prevNode = current?.prev else { return "" }
-        return prevNode.value
+    var prevValue: T? {
+        return current?.prev?.value
     }
     
-    var nextValue: String {
-        guard let nextNode = current?.next else { return "" }
-        return nextNode.value
+    var nextValue: T? {
+        return current?.next?.value
     }
 }
